@@ -15,6 +15,7 @@ gem 'rails', '4.2.5'
 
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
+   gem 'pry-rails', :group => :development
  end
 
 # use bootstrap - popular css framework
