@@ -36,6 +36,14 @@ posts=Post.all
   )
 end
 
+#create advertisements
+Advertisement.create(price: 150, title: "RubyMind", copy: "Make the move to a better day with better data.")
+Advertisement.create(price: 100, title: "iMinder", copy: "The quickist appointment book ever.")
+Advertisement.create(price: 97, title: "CheetahCub", copy: "The fastest data mining tool for small non-profits.")
+
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Advertisement.count} advertisements created"
+
