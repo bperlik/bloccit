@@ -1,20 +1,7 @@
 Rails.application.routes.draw do
-#  get 'posts/index'
-
-#  get 'posts/show'
-
-#   get 'posts/new'
-
-#   get 'posts/edit'
-
-# call the resources method and pass it a Symbol
-# Rails will create routes for creating, updating, viewing and 
-# deleting instances of the Post
+#remove all routing except the following and add resources :questions
   resources :posts
-
-#  get 'welcome/index'
-
-#  get 'welcome/about'
+  resources :questions
 
 # remove the get "welcome/index" because the root is declared as index
 # modify the about route to allow users to visit/about rather than /welcome/about
