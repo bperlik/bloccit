@@ -1,17 +1,10 @@
 Rails.application.routes.draw do
-#  get 'posts/index'
-
-#  get 'posts/show'
-
-#   get 'posts/new'
-
-#   get 'posts/edit'
-
-# call the resources method and pass it a Symbol
-# Rails will create routes for creating, updating, viewing and 
-# deleting instances of the Post
-  resources :posts
-
+  # resources :topics
+  # resources :posts
+  # changed resources to show passing resources :posts block to resources :topics block for nesting
+    resources :topics do
+      resources :posts, except: [:index]
+    end
 #  get 'welcome/index'
 
 #  get 'welcome/about'

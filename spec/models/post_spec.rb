@@ -2,16 +2,20 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  # use let method to create new instance of Post class, name it post
-  # let dynamically defines the (post) method, when first called within a spec
-  # (the it bloc) computes and stores the return value
-  let (:post) { Post.create!(title: "New Post Title", body: "New Post Body") }
+  let(:name) { RandomData.random_sentence }
+  let(:description) { RandomData.random_paragraph }
+  let(:title) { RandomData.random_sentence }
+  let(:body) { RandomData.random_paragraph }
+  # create a parent topic first
+  let(:topic) { Topic.create!(name: name, description: description) }
+  # create a posts with topic parent, CHAINED METHOD CALL
+  let(:post) { topic.posts.create!(title: title, body: body) }
 
-  # test whether post has attributes named title and body
-  # post should return a non-nil value when post.title and post.body are called
+  it  { is_expected.to belong_to(:topic) }
+
   describe "attributes" do
     it "has title and body attributes" do
-      expect(post).to have_attributes(title: "New Post Title", body: "New Post Body")
+      expect(post).to have_attributes(title: title, body: body)
     end
   end
 end
