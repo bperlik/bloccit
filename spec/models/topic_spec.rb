@@ -19,5 +19,7 @@ RSpec.describe Topic, type: :model do
 
     # test using Shoulda gem relationship methods
     it { is_expected.to have_many(:posts) }
-  end
+    # add tests for sponsored posts
+    it {is_expected.to have_many (:sponsored_posts) }
+ end
 end
