@@ -10,24 +10,6 @@
     </ul>
   </div>
   <div class="col-md-8">
-    <%= form_for [@topic, @post] do |f| %>
-      <div class="form-group">
-      <!-- use f.label to display title, form_for yields a form builder object
-       that provides f.label, f.label creates HTML label tag for that object -->
-      <%= f.label :title %>
-      <!-- f.text_field method from FormHelper provides input tag of text type and yields
-      <input class="form-control" placeholder="Enter post title" type="text" name="post[title]"> -->
-      <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
-  </div>
-  <div class="form-group">
-      <%= f.label :body%>
-      <%= f. text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
-    </div>
-    <div class="form-group">
-      <!-- f.submit yields an input tag and will yield
-      <input type="submit" name="commit" value="Save" class="btn btn-success"> -->
-       <%= f.submit "Save", class: 'btn btn-success' %>
-    </div>
-    <% end %>
-  </div>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
+ </div>
 </div?=>
