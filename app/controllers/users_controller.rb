@@ -3,6 +3,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def confirm
+  # create a user with new and params to show on confirm info page
+    @user = User.new
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+  end
+
   def create
   # create a user with new and set attributes from params hash
      @user = User.new

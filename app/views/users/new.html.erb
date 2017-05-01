@@ -2,12 +2,12 @@
 
  <div class="row">
    <div class="col-md-8">
-     <%= form_for @user do |f| %>
+     <%= form_for @user, :url => { :action => :confirm } do |f| %>
  <!—check errors hash on @user provided by ActiveModel:Errors
        and display error messages-->
        <% if @user.errors.any? %>
          <div class="alert alert-danger">
-           <h4><%= pluralize(@user.errors.count, "error") %>.</h4>
+           <h4>There are <%= pluralize(@user.errors.count, "error") %>.</h4>
            <ul>
              <% @user.errors.full_messages.each do |msg| %>
                <li><%= msg %></li>

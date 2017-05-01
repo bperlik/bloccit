@@ -7,10 +7,9 @@ Rails.application.routes.draw do
     end
 
    #create new and create actions, only hash key prevents unnec. route code
+    #added route to confirm signup info page
     resources :users, only:[:new, :create]
-#  get 'welcome/index'
-
-#  get 'welcome/about'
+      post 'users/confirm' => 'users#confirm'
 
 # remove the get "welcome/index" because the root is declared as index
 # modify the about route to allow users to visit/about rather than /welcome/about
