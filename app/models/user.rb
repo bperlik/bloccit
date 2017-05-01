@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # self_email = email.downase is the code that will run when the callback executes
   # callback are hooks that trigger logic before/after an alteration of an object’s state
    before_save { self.email = email.downcase if email.present? }
-
+   before_save :capitalize_username
   # 3 use Ruby’s validates function to ensure name is present & min/max length
    validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 
@@ -24,5 +24,15 @@ class User < ActiveRecord::Base
    #  to add methods to set and authenticate against a BCrypt password
    # requires a password_digest attribute
    has_secure_password
- end
 
+   # split name on space delimiter, capitalize each part, then join with space
+   def capitalize_username
+     if name != nil
+       name_array = []
+       name.split.each do |split_name|
+          name_array << split_name.capitalize
+       end
+       self.name = name_array.join(" ")
+    end
+  end
+end
