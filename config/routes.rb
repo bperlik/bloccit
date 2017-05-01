@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :topics do
       resources :posts, except: [:index]
     end
+
+   #create new and create actions, only hash key prevents unnec. route code
+    resources :users, only:[:new, :create]
 #  get 'welcome/index'
 
 #  get 'welcome/about'
