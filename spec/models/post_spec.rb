@@ -8,21 +8,25 @@ RSpec.describe Post, type: :model do
   let(:body) { RandomData.random_paragraph }
   # create a parent topic first
   let(:topic) { Topic.create!(name: name, description: description) }
-  # create a posts with topic parent, CHAINED METHOD CALL
-  let(:post) { topic.posts.create!(title: title, body: body) }
+  # create a user to associate with a test post
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
+  # associate user with post when creating the test post
+  let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
-  it  { is_expected.to belong_to(:topic) }
+  it { is_expected.to belong_to(:topic) }
+  it { is_expected.to belong_to(:user) }
 
    it { is_expected.to validate_presence_of(:title) }
    it { is_expected.to validate_presence_of(:body) }
    it { is_expected.to validate_presence_of(:topic) }
+   it { is_expected.to validate_presence_of(:user) }
 
    it { is_expected.to validate_length_of(:title).is_at_least(5) }
    it { is_expected.to validate_length_of(:body).is_at_least(20) }
 
   describe "attributes" do
-    it "has title and body attributes" do
-      expect(post).to have_attributes(title: title, body: body)
+    it "has title, body, and user attributes" do
+      expect(post).to have_attributes(title: title, body: body, user: user)
     end
   end
 end

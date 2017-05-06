@@ -3,6 +3,17 @@
 # modules cannot be instatiated or inherit like classes
 module RandomData
 
+  # define random name and email for user
+  def self.random_name
+    first_name = random_word.capitalize
+    last_name = random_word.capitalize
+    "#{first_name} #{last_name}"
+  end
+
+  def self.random_email
+    "#{random_word}@#{random_word}.#{random_word}"
+  end
+
   # define random_paragraph
   # set sentences to an array,
   # create 4-6 random sentences and append to the array

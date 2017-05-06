@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # 2 register an inline callback directly after before_save callback
   # self_email = email.downase is the code that will run when the callback executes
   # callback are hooks that trigger logic before/after an alteration of an object’s state
+   has_many :posts
    before_save { self.email = email.downcase if email.present? }
 
   # 3 use Ruby’s validates function to ensure name is present & min/max length

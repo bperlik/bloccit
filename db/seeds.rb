@@ -1,9 +1,18 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-#
-#
 require 'random_data'
+
+# create users
+5.times do
+  User.create!(
+    # Using wishful coding to add random data
+    name: RandomData.random_name,
+    email: RandomData.random_email,
+    password: RandomData.random_sentence
+  )
+end
+users =  User.all
 
 # create topics
 15.times do
@@ -24,12 +33,12 @@ topics = Topic.all
     # that will create random strings for title and body
     # wishful coding = writing code for classes and methods that don't
     # exist because it keeps you focused and saves time
+    user:   users.sample,
     topic:  topics.sample,
     title:  RandomData.random_sentence,
     body:   RandomData.random_paragraph
     )
 end
-
 posts = Post.all
 
 #create comments
@@ -43,7 +52,14 @@ posts = Post.all
   )
 end
 
+user = User.first
+user.update_attributes!(
+  email: 'barbperlik@gmail.com',
+  password: 'helloworld'
+)
+
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
