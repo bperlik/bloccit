@@ -17,9 +17,7 @@
       </div>
    <% end %>
   </div>
-   #check if there was a signed-in current user and current user is an admin
-   #to display new topic button only if user is admin
-   <% if user_is_authorized_for_topics? %>
+   <% if user_is_authorized_for_creating_topics? %>
      <div class="col-md-4">
        <!-- create a ink to create a new topic   -->
        <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>

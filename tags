@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddRoleToUsers	db/migrate/20170507012549_add_role_to_users.rb	/^class AddRoleToUsers < ActiveRecord::Migration$/;"	c
+AddTopicToPosts	db/migrate/20170425231935_add_topic_to_posts.rb	/^class AddTopicToPosts < ActiveRecord::Migration$/;"	c
+AddUserToPosts	db/migrate/20170506035926_add_user_to_posts.rb	/^class AddUserToPosts < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Bloccit
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Bloccit	config/application.rb	/^module Bloccit$/;"	m
+Comment	app/models/comment.rb	/^class Comment < ActiveRecord::Base$/;"	c
+CreateComments	db/migrate/20170408013101_create_comments.rb	/^class CreateComments < ActiveRecord::Migration$/;"	c
+CreatePosts	db/migrate/20170407201513_create_posts.rb	/^class CreatePosts < ActiveRecord::Migration$/;"	c
+CreateTopics	db/migrate/20170425160756_create_topics.rb	/^class CreateTopics < ActiveRecord::Migration$/;"	c
+CreateUsers	db/migrate/20170501021448_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+Post	app/models/post.rb	/^class Post < ActiveRecord::Base$/;"	c
+PostsController	app/controllers/posts_controller.rb	/^class PostsController < ApplicationController$/;"	c
+PostsHelper	app/helpers/posts_helper.rb	/^module PostsHelper$/;"	m
+RandomData	lib/random_data.rb	/^module RandomData$/;"	m
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SessionsHelper	app/helpers/sessions_helper.rb	/^module SessionsHelper$/;"	m
+Topic	app/models/topic.rb	/^class Topic < ActiveRecord::Base$/;"	c
+TopicsController	app/controllers/topics_controller.rb	/^class TopicsController < ApplicationController$/;"	c
+TopicsHelper	app/helpers/topics_helper.rb	/^module TopicsHelper$/;"	m
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
+WelcomeController	app/controllers/welcome_controller.rb	/^class WelcomeController < ApplicationController$/;"	c
+WelcomeHelper	app/helpers/welcome_helper.rb	/^module WelcomeHelper$/;"	m
+about	app/controllers/welcome_controller.rb	/^  def about$/;"	f	class:WelcomeController
+authorize_admin	app/controllers/posts_controller.rb	/^  def authorize_admin$/;"	f	class:PostsController
+authorize_admin	app/controllers/topics_controller.rb	/^  def authorize_admin$/;"	f	class:TopicsController
+authorize_moderator	app/controllers/posts_controller.rb	/^  def authorize_moderator$/;"	f	class:PostsController
+authorize_moderator	app/controllers/topics_controller.rb	/^  def authorize_moderator$/;"	f	class:TopicsController
+authorize_user	app/controllers/posts_controller.rb	/^  def authorize_user$/;"	f	class:PostsController
+authorize_user	app/controllers/topics_controller.rb	/^  def authorize_user$/;"	f	class:TopicsController
+change	db/migrate/20170407201513_create_posts.rb	/^  def change$/;"	f	class:CreatePosts
+change	db/migrate/20170408013101_create_comments.rb	/^  def change$/;"	f	class:CreateComments
+change	db/migrate/20170425160756_create_topics.rb	/^  def change$/;"	f	class:CreateTopics
+change	db/migrate/20170425231935_add_topic_to_posts.rb	/^  def change$/;"	f	class:AddTopicToPosts
+change	db/migrate/20170501021448_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+change	db/migrate/20170506035926_add_user_to_posts.rb	/^  def change$/;"	f	class:AddUserToPosts
+change	db/migrate/20170507012549_add_role_to_users.rb	/^  def change$/;"	f	class:AddRoleToUsers
+create	app/controllers/posts_controller.rb	/^  def create$/;"	f	class:PostsController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create	app/controllers/topics_controller.rb	/^  def create$/;"	f	class:TopicsController
+create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+create_session	app/helpers/sessions_helper.rb	/^   def create_session(user)$/;"	f	class:SessionsHelper
+current_user	app/helpers/sessions_helper.rb	/^   def current_user$/;"	f	class:SessionsHelper
+destroy	app/controllers/posts_controller.rb	/^  def destroy$/;"	f	class:PostsController
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+destroy	app/controllers/topics_controller.rb	/^  def destroy$/;"	f	class:TopicsController
+destroy_session	app/helpers/sessions_helper.rb	/^   def destroy_session(user)$/;"	f	class:SessionsHelper
+edit	app/controllers/posts_controller.rb	/^  def edit$/;"	f	class:PostsController
+edit	app/controllers/topics_controller.rb	/^  def edit$/;"	f	class:TopicsController
+form_group_tag	app/helpers/application_helper.rb	/^   def form_group_tag(errors, &block)$/;"	f	class:ApplicationHelper
+index	app/controllers/topics_controller.rb	/^  def index$/;"	f	class:TopicsController
+index	app/controllers/welcome_controller.rb	/^  def index$/;"	f	class:WelcomeController
+new	app/controllers/posts_controller.rb	/^  def new$/;"	f	class:PostsController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+new	app/controllers/topics_controller.rb	/^  def new$/;"	f	class:TopicsController
+new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+post_params	app/controllers/posts_controller.rb	/^  def post_params$/;"	f	class:PostsController
+random_email	lib/random_data.rb	/^  def self.random_email$/;"	F	class:RandomData
+random_name	lib/random_data.rb	/^  def self.random_name$/;"	F	class:RandomData
+random_paragraph	lib/random_data.rb	/^  def self.random_paragraph$/;"	F	class:RandomData
+random_sentence	lib/random_data.rb	/^  def self.random_sentence$/;"	F	class:RandomData
+random_word	lib/random_data.rb	/^  def self.random_word$/;"	F	class:RandomData
+require_sign_in	app/controllers/application_controller.rb	/^  def require_sign_in$/;"	f	class:ApplicationController
+show	app/controllers/posts_controller.rb	/^  def show$/;"	f	class:PostsController
+show	app/controllers/topics_controller.rb	/^  def show$/;"	f	class:TopicsController
+topic_params	app/controllers/topics_controller.rb	/^  def topic_params$/;"	f	class:TopicsController
+update	app/controllers/posts_controller.rb	/^  def update$/;"	f	class:PostsController
+update	app/controllers/topics_controller.rb	/^  def update$/;"	f	class:TopicsController
+user_is_authorized_for_creating_posts?	app/helpers/posts_helper.rb	/^  def user_is_authorized_for_creating_posts?$/;"	f	class:PostsHelper
+user_is_authorized_for_creating_topics?	app/helpers/topics_helper.rb	/^  def user_is_authorized_for_creating_topics?$/;"	f	class:TopicsHelper
+user_is_authorized_for_deleting_posts?	app/helpers/posts_helper.rb	/^  def user_is_authorized_for_deleting_posts?$/;"	f	class:PostsHelper
+user_is_authorized_for_deleting_topics?	app/helpers/topics_helper.rb	/^  def user_is_authorized_for_deleting_topics?$/;"	f	class:TopicsHelper
+user_is_authorized_for_editing_topics?	app/helpers/topics_helper.rb	/^  def user_is_authorized_for_editing_topics?$/;"	f	class:TopicsHelper
+user_is_authorized_for_post?	app/helpers/posts_helper.rb	/^  def user_is_authorized_for_post?(post)$/;"	f	class:PostsHelper
+user_is_authorized_for_updating_posts?	app/helpers/posts_helper.rb	/^  def user_is_authorized_for_updating_posts?$/;"	f	class:PostsHelper

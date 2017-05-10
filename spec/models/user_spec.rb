@@ -31,8 +31,16 @@ RSpec.describe User, type: :model do
       expect(user).to respond_to(:role)
     end
 
+    # expect users to respond to moderator?
+    # which will return whether or not user is a mod
+    # implement in using ActiveRecord::Enum class
+    it "responds to moderator?" do
+      expect(user).to respond_to(:moderator?)
+    end
+
+
     # expect users to respond to admin?
-    # which will return whether or not user is an admi
+    # which will return whether or not user is an admin
     # implement in using ActiveRecord::Enum class
     it "responds to admin?" do
       expect(user).to respond_to(:admin?)
@@ -57,10 +65,33 @@ RSpec.describe User, type: :model do
          expect(user.member?).to be_truthy
        end
 
+       it "returns false for #moderator?" do
+         expect(user.moderator?).to be_falsey
+       end
+
        it "returns false for #admin?" do
          expect(user.admin?).to be_falsey
        end
      end
+
+     # test moderator user in a separate context
+     context "moderator user" do
+       before do
+         user.moderator!
+       end
+
+       it "returns false for #member?" do
+         expect(user.member?).to be_falsey
+       end
+
+       it "returns true for #moderator?" do
+         expect(user.moderator?).to be_truthy
+       end
+
+       it "returns false for #admin?" do
+        expect(user.admin?).to be_falsey
+       end
+    end
 
      # test admin user in separate context
      context "admin user" do
@@ -70,6 +101,10 @@ RSpec.describe User, type: :model do
 
        it "returns false for #member?" do
          expect(user.member?).to be_falsey
+       end
+
+       it "returns false for #moderator?" do
+         expect(user.moderator?).to be_falsey
        end
 
        it "returns true for #admin?" do

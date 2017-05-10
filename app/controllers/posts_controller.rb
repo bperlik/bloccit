@@ -1,14 +1,8 @@
 class PostsController < ApplicationController
-  # removed index route for posts bec.the posts index view is no longer needed
-  # due to nesting, they appear under topics show view
-  #  def index
-  #  @posts = Post.all
-  # end
-
   # use a before_action filter to call the require_sign_in method
   # before each of our controller actions, EXCEPT for the show action
-  before_action  :require_sign_in, except: :show
-  # 10 check the role of signed-in user
+  before_action :require_sign_in, except: :show
+ # before_action :authorize_moderator, only: [:create, :new, :update, :edit]
   # if current-user isn't authorized based on their role,
   # redirect to post show view
   before_action :authorize_user, except: [:show, :new, :create]
@@ -68,13 +62,13 @@ class PostsController < ApplicationController
 
     # call destroy on post, if successful set set a flash message & return to posts index view
     # if destroy fails, set a alert message and return to show view
-      if @post.destroy
-        flash[:notice] = "\"#{@post.title}\" was deleted successfully."
-        redirect_to @post.topic
-      else
-        flash.now[:alert] = "There was an error in deleting your post."
-        render :show
-      end
+    if @post.destroy
+      flash[:notice] = "\"#{@post.title}\" was deleted successfully."
+      redirect_to @post.topic
+    else
+      flash.now[:alert] = "There was an error in deleting your post."
+      render :show
+    end
   end
 
   # remember to add private methods at very bottom
@@ -87,11 +81,22 @@ class PostsController < ApplicationController
 
   def authorize_user
     post = Post.find(params[:id])
-    # 11 redirect user unless they own the post or they are an admin
     unless current_user == post.user || current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to [post.topic, post]
+      # members and moderators are not allowed to delete posts
+      if self.action_name == 'destroy'
+        auth_failure('admin', post)
+      # moderators can create or edit any post
+      else
+        unless current_user.moderator?
+          auth_failure('moderator or an admin', post)
+        end
+      end
     end
   end
-end
 
+  def auth_failure(role, post)
+     flash[:alert] = "PostsController: You must be the creator of this post or #{role == 'admin' ? 'an' : 'a'} #{role} to " \
+                    "#{self.action_name == 'new' ? 'create' : self.action_name} a post. [current_user.name(role) = '#{current_user.name}(#{current_user.role})']"
+    redirect_to [post.topic, post]
+  end
+end
