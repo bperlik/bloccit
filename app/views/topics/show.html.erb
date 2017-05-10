@@ -10,6 +10,7 @@
      <p class="lead"><%= @topic.description %></p>
      <!-- iterate over posts belonging to parent @topic and display each post -->
      <% @topic.posts.each do |post| %>
+       <!-- commenting out section for partial
        <div class="media">
          <div class="media-body">
            <h4 class="media-heading">
@@ -20,7 +21,9 @@
              <%= post.comments.count %> Comments
            </small>
          </div>
-       </div>
+         </div>
+       -->
+       <%= render partial: 'posts/post', locals: { post: post} %>
      <% end %>
   </div>
   <% if current_user %>
