@@ -41,12 +41,10 @@ topics = Topic.all
 end
 posts = Post.all
 
-#create comments
+# Create Comments
 100.times do
   Comment.create!(
-    # call sample on the array returned by Post.all in order to pick a random
-    # post to associate each comment with
-    # Sample - returns a random element from the array when its called
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )

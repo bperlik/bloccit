@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # self_email = email.downase is the code that will run when the callback executes
   # callback are hooks that trigger logic before/after an alteration of an object’s state
    has_many :posts
+   has_many :comments
    before_save { self.role ||= :member }
    # the code in {...||...} is shorthand for
    # self.role = :member if self.role.nil?

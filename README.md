@@ -2,7 +2,7 @@
 
 Made with my mentor at [Bloc](http://bloc.io).
 
-# [Bloccit](https://bperlik-bloccit.herokuapp.com)
+# [Bloccit]((https://bperlik-bloccit.herokuapp.com/ "Bloccit")
 
 Bloccit is a Ruby on Rails application that allows users to create topics and posts. Users are able to up/down vote posts as well as favorite them. All aspects for this app were custom built, including authentication and authorization, in order to gain a thorough understanding of their functionality.
 
@@ -23,8 +23,7 @@ This app was created as part of the [Bloc](www.bloc.io) Full Stack Web Developme
 
 **Languages and Frameworks**: Ruby on Rails and Bootstrap
 
-**Ruby version
-2.3.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.43.4**
+**Ruby version 2.43
 
 **Databases**: SQLite (Test, Development), PostgreSQL (Production)
 

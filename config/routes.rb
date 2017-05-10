@@ -6,6 +6,16 @@ Rails.application.routes.draw do
       resources :posts, except: [:index]
     end
 
+   # use only: [ ] so no /posts/:id routes are created,
+   #  just posts/:post_id/comments routes
+   #  add create and destroy routes for comments
+   #  comments will display on posts show view, so index, new arent needed
+   #  also users won't view or edit indiv comments, so show, update & edit aren't needed
+
+   resources :posts, only: [] do
+     resources :comments, only: [:create, :destroy]
+   end
+
    #create new and create actions, only hash key prevents unnec. route code
     resources :users, only:[:new, :create]
 
