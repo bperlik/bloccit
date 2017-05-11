@@ -33,56 +33,72 @@ RSpec.describe Post, type: :model do
   end
 
   describe "voting" do
-     #create three up and two down votes before each voting spec
-     before do
-       3.times { post.votes.create!(value: 1) }
-       2.times { post.votes.create!(value: -1) }
-       @up_votes = post.votes.where(value: 1).count
-       @down_votes = post.votes.where(value: -1).count
-     end
+   #create three up and two down votes before each voting spec
+   before do
+     3.times { post.votes.create!(value: 1) }
+     2.times { post.votes.create!(value: -1) }
+     @up_votes = post.votes.where(value: 1).count
+     @down_votes = post.votes.where(value: -1).count
+   end
 
-     # test that up_votes returns the count of up votes
-     describe "#up_votes" do
-       it "counts the number of votes with value = 1" do
-         expect( post.up_votes ).to eq(@up_votes)
-       end
-     end
-
-     # test that down_votes returns the count of down votes
-     describe "#down_votes" do
-       it "counts the number of votes with value = -1" do
-         expect( post.down_votes ).to eq(@down_votes)
-       end
-     end
-
-     # test that points returns the sum of all votes for that post
-     describe "#points" do
-       it "returns the sum of all down and up votes" do
-         expect( post.points ).to eq(@up_votes - @down_votes)
-       end
-     end
-
-     describe "#update_rank" do
- # #28 use time-based ranking algorithm
-       # which uses Jan 1, 1970 as an epoch,
-       # subtract post time from epoch to determine post's age
-       # which decays rank by age
-       it "calculates the correct rank" do
-         post.update_rank
-         expect(post.rank).to eq (post.points + (post.created_at - Time.new(1970,1,1)) / 1.day.seconds)
-       end
-
-       it "updates the rank when an up vote is created" do
-         old_rank = post.rank
-         post.votes.create!(value: 1)
-         expect(post.rank).to eq (old_rank + 1)
-       end
-
-       it "updates the rank when a down vote is created" do
-         old_rank = post.rank
-         post.votes.create!(value: -1)
-         expect(post.rank).to eq (old_rank - 1)
-       end
+   # test that up_votes returns the count of up votes
+   describe "#up_votes" do
+     it "counts the number of votes with value = 1" do
+       expect( post.up_votes ).to eq(@up_votes)
      end
    end
-end
+
+   # test that down_votes returns the count of down votes
+   describe "#down_votes" do
+     it "counts the number of votes with value = -1" do
+       expect( post.down_votes ).to eq(@down_votes)
+     end
+   end
+
+   # test that points returns the sum of all votes for that post
+   describe "#points" do
+     it "returns the sum of all down and up votes" do
+       expect( post.points ).to eq(@up_votes - @down_votes)
+     end
+   end
+
+   describe "#update_rank" do
+   # #28 use time-based ranking algorithm
+   # which uses Jan 1, 1970 as an epoch,
+   # subtract post time from epoch to determine post's age
+   # which decays rank by age
+     it "calculates the correct rank" do
+       post.update_rank
+       expect(post.rank).to eq (post.points + (post.created_at - Time.new(1970,1,1)) / 1.day.seconds)
+     end
+
+     it "updates the rank when an up vote is created" do
+       old_rank = post.rank
+       post.votes.create!(value: 1)
+       expect(post.rank).to eq (old_rank + 1)
+     end
+
+     it "updates the rank when a down vote is created" do
+       old_rank = post.rank
+       post.votes.create!(value: -1)
+       expect(post.rank).to eq (old_rank - 1)
+     end
+   end
+
+   describe "#create vote" do
+     it "sets the post up_votes value to 1" do
+       expect(post.up_votes).to eq (1)
+     end
+
+     it "calls #create_vote when a post is created" do
+       post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+       expect(post).to receive(:create_vote)
+       post.save
+     end
+
+     it "associates the vote with the owner of the post" do
+       expect(post.votes.first.user).to eq (post.user)
+     end
+   end
+ end
+
