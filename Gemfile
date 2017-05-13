@@ -34,4 +34,6 @@ gem 'rails', '4.2.5'
  gem 'jquery-rails'
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
+ # Figaro - use to store Sendgrid and Devise creditials as environment variables
+ gem 'figaro', '1.0'
 

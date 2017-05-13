@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   # this relates the models & allows a call of post.votes
   # add dependent: :destroy so votes are destroyed when a parent post is deleted
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   default_scope { order('rank DESC') }
 
   validates :title, length:{ minimum: 5 }, presence: true

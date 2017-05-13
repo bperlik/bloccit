@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+   </head>
+   <body>
+     <h1>New comment to "<%= @post.title %>"</h1>
+     <small>
+       By: <%= @comment.user.name %>
+     </small>
+     <p>
+       <%= @comment.body %>
+     </p>
+     <p>
+     <!--  ***** VERY IMPORTANT ***** use topic_post_url to get an absolute URL, complete address
+     # NOT _PATH which returns a relative URL like topics/3
+     # user anchor: option to the link_to method
+     # adds custom parameters to the url, to link the user directly to the comment,
+     # jumps to the anchor, can also use with id tag after the URL -->
+       <%= link_to "View Comment on site", topic_post_url(@post.topic, @post, anchor: "comment-#{@comment.id}") %>
+     </p>
+   </body>
+ </html>
