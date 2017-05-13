@@ -15,4 +15,15 @@ class FavoriteMailer < ApplicationMailer
   # use the mail method (take hash of to address, subject, an from (default) and cc/bcc)
      mail(to: user.email, subject: "New comment on #{post.title}", cc: "rizwanreza@bloc.io")
    end
+
+  def new_post(post)
+    headers["Message-ID"] = "<posts/#{post.id}@bloccit.example>"
+    headers["In-Reply-To"] = "<posts/#{post.id}@bloccit.example>"
+    headers["References"] = "<posts/#{post.id}@bloccit.example>"
+
+    @post = post
+
+    mail(to: post.user.email, subject: "Your post, #{post.title}, has been favorited!")
+  end
 end
+
