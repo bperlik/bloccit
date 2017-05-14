@@ -8,7 +8,14 @@ class Post < ActiveRecord::Base
   # add dependent: :destroy so votes are destroyed when a parent post is deleted
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
   default_scope { order('rank DESC') }
+
+  # 15 use lambd -> to ensure that user is present and signed in
+  # if user present, return all posts
+  # if not, use ActiveRecord joins method to retrieve
+  # all posts that belong to public post
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   validates :title, length:{ minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true

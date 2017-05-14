@@ -21,7 +21,7 @@ Rails.application.routes.draw do
    end
 
    #create new and create actions, only hash key prevents unnec. route code
-    resources :users, only:[:new, :create]
+    resources :users, only:[:new, :create, :show]
 
     resources :sessions, only: [:new, :create, :destroy]
 #  get 'welcome/index'
